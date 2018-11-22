@@ -1,4 +1,4 @@
-package sn.objis.sunuBanque.domaine;
+package sn.objis.sunubanque.domaine;
 
 import java.io.Serializable;
 import java.util.Date;

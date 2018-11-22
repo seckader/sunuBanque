@@ -1,8 +1,9 @@
-package sn.objis.sunuBanque.domaine;
+package sn.objis.sunubanque.domaine;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import sn.objis.sunuBanque.domaine.CompteBancaire;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 /**
  * Cette classe repréente un CompteCourant.

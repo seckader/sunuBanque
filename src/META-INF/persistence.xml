@@ -7,7 +7,17 @@
 		<jta-data-source>java:jboss/sunuBanqueDS</jta-data-source>
 
 <!-- 		Mapping des classes -->
-		<class>sn.objis.sunuBanque.domaine.Role</class>
+		<class>sn.objis.sunubanque.domaine.Role</class>
+		<class>sn.objis.sunubanque.domaine.Utilisateur</class>
+		<class>sn.objis.sunubanque.domaine.Employe</class>
+		<class>sn.objis.sunubanque.domaine.CompteBancaire</class>
+		<class>sn.objis.sunubanque.domaine.CompteCourant</class>
+		<class>sn.objis.sunubanque.domaine.CompteEpargne</class>
+		<class>sn.objis.sunubanque.domaine.Groupe</class>
+		<class>sn.objis.sunubanque.domaine.Client</class>
+		<class>sn.objis.sunubanque.domaine.Operation</class>
+		<class>sn.objis.sunubanque.domaine.Versement</class>
+		<class>sn.objis.sunubanque.domaine.Retrait</class>
 		
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
