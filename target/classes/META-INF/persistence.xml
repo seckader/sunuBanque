@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="sunuBanque">
+	<persistence-unit name="sunuBanque" transaction-type="JTA">
+		
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		
+		<jta-data-source>java:jboss/sunuBanqueDS</jta-data-source>
+
+<!-- 		Mapping des classes -->
+		<class>sn.objis.sunuBanque.domaine.Role</class>
+		
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+			
+			<!-- Affichage des requêtes SQL à partir des requêtes JPQL -->
+			<property name="hibernate.show_sql" value="true" />
+
+			<!-- Mise à jour des données -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
+			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
+		</properties>
 	</persistence-unit>
 </persistence>
