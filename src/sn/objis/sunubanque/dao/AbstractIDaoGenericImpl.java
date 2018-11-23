@@ -1,7 +1,6 @@
 package sn.objis.sunubanque.dao;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -66,7 +65,7 @@ public class AbstractIDaoGenericImpl<E, P extends Serializable> implements IDaoG
 	@Override
 	public List<E> findAll() {
 		
-		List<E> listeElements = new ArrayList<>();
+		List<E> listeElements;
 		
 		String requeteJPQL = "SELECT e FROM E e";
 		TypedQuery<E> typedQuery = entityManager.createQuery(requeteJPQL, entity);
