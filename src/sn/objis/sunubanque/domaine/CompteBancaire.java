@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,9 +27,23 @@ import javax.persistence.TemporalType;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "typeCompte", discriminatorType = DiscriminatorType.STRING)
+@NamedQueries({
+		/*
+		 * Requête permettant de lister les comptes bancaires d'un client.
+		 */
+		@NamedQuery(name = CompteBancaire.FIND_ALL_COMPTE_BY_CLIENT, query = "SELECT b FROM CompteBancaire b JOIN b.client c WHERE c=:client"),
+		
+		/*
+		 * Requête permettant de lister les comptes bancaires créées par un employe.
+		 */
+		@NamedQuery(name = CompteBancaire.FIND_ALL_COMPTE_BY_EMPLOYE, query = "SELECT c FROM CompteBancaire c JOIN c.employe e WHERE e=:employe")
+})
 public abstract class CompteBancaire implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	public static final String FIND_ALL_COMPTE_BY_CLIENT = "listerParClient";
+	public static final String FIND_ALL_COMPTE_BY_EMPLOYE = "listerParEmploye";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
