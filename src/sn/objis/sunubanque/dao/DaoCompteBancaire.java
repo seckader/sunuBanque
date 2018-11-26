@@ -6,7 +6,6 @@ import javax.persistence.Query;
 import javax.ws.rs.client.Client;
 
 import sn.objis.sunubanque.domaine.CompteBancaire;
-import sn.objis.sunubanque.domaine.CompteCourant;
 import sn.objis.sunubanque.domaine.Employe;
 
 /**
