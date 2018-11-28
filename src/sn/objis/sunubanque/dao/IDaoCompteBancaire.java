@@ -2,8 +2,7 @@ package sn.objis.sunubanque.dao;
 
 import java.util.List;
 
-import javax.ws.rs.client.Client;
-
+import sn.objis.sunubanque.domaine.Client;
 import sn.objis.sunubanque.domaine.CompteBancaire;
 import sn.objis.sunubanque.domaine.Employe;
 
