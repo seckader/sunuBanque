@@ -33,7 +33,7 @@ public class Employe implements Serializable {
 	/**
 	 * Un employé peut avoir 0 ou 1 supérieur hierarchique.
 	 */
-	@Column(nullable = true)
+	@JoinColumn(name="superieur")
 	@ManyToOne(targetEntity = Employe.class)
 	private Employe superieurHierarchique;
 

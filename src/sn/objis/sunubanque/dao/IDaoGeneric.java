@@ -22,7 +22,7 @@ public interface IDaoGeneric<T, K extends Serializable> {
 	 * @param element:
 	 *            Représente l'élément à ajouter à la base de données.
 	 */
-	public void create(T element);
+	public void create(T element) throws Exception;
 
 	/**
 	 * Cette méthode permet trouver un élément à partir de son identifiant.
