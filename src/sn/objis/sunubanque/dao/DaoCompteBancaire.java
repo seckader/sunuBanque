@@ -25,11 +25,15 @@ public class DaoCompteBancaire extends AbstractIDaoGenericImpl<CompteBancaire, L
 	public List<CompteBancaire> findCompteByClient(Client client) {
 
 		List<CompteBancaire> listeComptesBancaires;
+		
+		entityTransaction.begin();
 
 		Query query = entityManager.createNamedQuery(CompteBancaire.FIND_ALL_COMPTE_BY_CLIENT);
 		query.setParameter("client", client);
 
 		listeComptesBancaires = query.getResultList();
+		
+		entityTransaction.commit();
 
 		return listeComptesBancaires;
 	}
@@ -39,10 +43,14 @@ public class DaoCompteBancaire extends AbstractIDaoGenericImpl<CompteBancaire, L
 		
 		List<CompteBancaire> listeComptesBancaires;
 		
+		entityTransaction.begin();
+		
 		Query query = entityManager.createNamedQuery(CompteBancaire.FIND_ALL_COMPTE_BY_EMPLOYE);
 		query.setParameter("employe", employe);
 		
 		listeComptesBancaires = query.getResultList();
+		
+		entityTransaction.commit();
 		
 		return listeComptesBancaires;
 	}

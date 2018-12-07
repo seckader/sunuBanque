@@ -30,6 +30,8 @@ public class DaoGroupe extends AbstractIDaoGenericImpl<Groupe, Long> implements 
 		
 		List<Groupe> listeGroupes;
 		
+		entityTransaction.begin();
+		
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Groupe> criteriaQuery = criteriaBuilder.createQuery(Groupe.class);
 		
@@ -45,6 +47,8 @@ public class DaoGroupe extends AbstractIDaoGenericImpl<Groupe, Long> implements 
 		TypedQuery<Groupe> typedQuery = entityManager.createQuery(criteriaQuery);
 		typedQuery.setParameter(parameterExpression, employe);
 		listeGroupes = typedQuery.getResultList();
+		
+		entityTransaction.commit();
 		
 		return listeGroupes;
 	}

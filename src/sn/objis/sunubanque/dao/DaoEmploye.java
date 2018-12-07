@@ -28,15 +28,21 @@ public class DaoEmploye extends AbstractIDaoGenericImpl<Employe, Long> implement
 	@Override
 	public void addEmployeeToGroup(Employe employe, Groupe groupe) {
 		
+		entityTransaction.begin();
+		
 		employe.getListeGroupes().add(groupe);
 		
 		update(employe);
+		
+		entityTransaction.commit();
 	}
 
 	@Override
 	public List<Employe> findEmployeeByGroup(Groupe groupe) {
 		
 		List<Employe> listeEmployes;
+		
+		entityTransaction.begin();
 		
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Employe> criteriaQuery = criteriaBuilder.createQuery(Employe.class);
@@ -53,6 +59,8 @@ public class DaoEmploye extends AbstractIDaoGenericImpl<Employe, Long> implement
 		TypedQuery<Employe> typedQuery = entityManager.createQuery(criteriaQuery);
 		typedQuery.setParameter(parameterExpression, groupe);
 		listeEmployes = typedQuery.getResultList();
+		
+		entityTransaction.commit();
 		
 		return listeEmployes;
 	}

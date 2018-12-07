@@ -49,25 +49,38 @@ public class AbstractIDaoGenericImpl<E, P extends Serializable> implements IDaoG
 	public E findById(P id) {
 
 		E elementTrouve = null;
+		
+		entityTransaction.begin();
 
 		elementTrouve = entityManager.find(entity, id);
+		
+		entityTransaction.commit();
 
 		return elementTrouve;
 	}
 
 	@Override
 	public void update(E element) {
+		
+		entityTransaction.begin();
+		
 		entityManager.merge(element);
+		
+		entityTransaction.commit();
 	}
 
 	@Override
 	public void delete(E element) {
+		
+		entityTransaction.begin();
 
 		if (entityManager.contains(element)) {
 			entityManager.remove(element);
 		} else {
 			entityManager.remove(entityManager.merge(element));
 		}
+		
+		entityTransaction.commit();
 
 	}
 
@@ -75,10 +88,14 @@ public class AbstractIDaoGenericImpl<E, P extends Serializable> implements IDaoG
 	public List<E> findAll() {
 
 		List<E> listeElements;
+		
+		entityTransaction.begin();
 
 		String requeteJPQL = "SELECT e FROM E e";
 		TypedQuery<E> typedQuery = entityManager.createQuery(requeteJPQL, entity);
 		listeElements = typedQuery.getResultList();
+		
+		entityTransaction.commit();
 
 		return listeElements;
 	}
