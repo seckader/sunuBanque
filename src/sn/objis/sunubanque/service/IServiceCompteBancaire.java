@@ -28,4 +28,11 @@ public interface IServiceCompteBancaire extends IService<CompteBancaire> {
 	 */
 	public List<CompteBancaire> findCompteByEmploye(Employe employe);
 	
+	public CompteBancaire findByNumeroCompte(String numeroCompte);
+	
+	public boolean versement(CompteBancaire compteBancaire, double montant);
+	
+	public boolean retrait(CompteBancaire compteBancaire, double montant);
+	
+	public boolean virement(CompteBancaire compteOrigine, CompteBancaire compteBeneficiaire, double montant);
 }

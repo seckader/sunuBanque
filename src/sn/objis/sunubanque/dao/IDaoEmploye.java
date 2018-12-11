@@ -4,6 +4,7 @@ import java.util.List;
 
 import sn.objis.sunubanque.domaine.Employe;
 import sn.objis.sunubanque.domaine.Groupe;
+import sn.objis.sunubanque.domaine.Utilisateur;
 
 /**
  * Interface exposant les méthodes d'interaction avec la base de données de
@@ -13,6 +14,14 @@ import sn.objis.sunubanque.domaine.Groupe;
  *
  */
 public interface IDaoEmploye extends IDaoGeneric<Employe, Long> {
+
+	/**
+	 * Cette méthode permet de récupérer l'ensemble des enregistrements se trouvant
+	 * dans la base de données.
+	 * 
+	 * @return
+	 */
+	public List<Employe> findAll();
 
 	/**
 	 * Cette méthode permet d'ajouter un employé à un groupe.
@@ -29,8 +38,10 @@ public interface IDaoEmploye extends IDaoGeneric<Employe, Long> {
 	 * 
 	 * @param groupe:
 	 *            Le groupe dont on veut voir la liste de ses employés.
-	 * @return La liste des employés du groupe passé en paramètre. 
+	 * @return La liste des employés du groupe passé en paramètre.
 	 */
 	public List<Employe> findEmployeeByGroup(Groupe groupe);
+
+	public Employe findByUtilisateur(Utilisateur utilisateur);
 
 }

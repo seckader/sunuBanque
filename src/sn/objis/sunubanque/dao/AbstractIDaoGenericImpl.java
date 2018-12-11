@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -21,9 +22,16 @@ import javax.persistence.TypedQuery;
  */
 public class AbstractIDaoGenericImpl<E, P extends Serializable> implements IDaoGeneric<E, P> {
 
-	private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("sunuBanque");
+	private static EntityManagerFactory entityManagerFactory;
 
-	protected EntityManager entityManager = entityManagerFactory.createEntityManager();
+	protected static EntityManager entityManager;
+
+	static {
+		if (entityManagerFactory == null) {
+			entityManagerFactory = Persistence.createEntityManagerFactory("sunuBanque");
+		}
+		entityManager = entityManagerFactory.createEntityManager();
+	}
 	
 	protected EntityTransaction entityTransaction = entityManager.getTransaction();
 
@@ -35,12 +43,12 @@ public class AbstractIDaoGenericImpl<E, P extends Serializable> implements IDaoG
 	}
 
 	@Override
-	public void create(E element) throws Exception {
+	public void create(E element) {
 
 		entityTransaction.begin();
-		
+
 		entityManager.persist(element);
-		
+
 		entityTransaction.commit();
 
 	}
@@ -49,11 +57,11 @@ public class AbstractIDaoGenericImpl<E, P extends Serializable> implements IDaoG
 	public E findById(P id) {
 
 		E elementTrouve = null;
-		
+
 		entityTransaction.begin();
 
 		elementTrouve = entityManager.find(entity, id);
-		
+
 		entityTransaction.commit();
 
 		return elementTrouve;
@@ -61,17 +69,17 @@ public class AbstractIDaoGenericImpl<E, P extends Serializable> implements IDaoG
 
 	@Override
 	public void update(E element) {
-		
+
 		entityTransaction.begin();
-		
+
 		entityManager.merge(element);
-		
+
 		entityTransaction.commit();
 	}
 
 	@Override
 	public void delete(E element) {
-		
+
 		entityTransaction.begin();
 
 		if (entityManager.contains(element)) {
@@ -79,25 +87,9 @@ public class AbstractIDaoGenericImpl<E, P extends Serializable> implements IDaoG
 		} else {
 			entityManager.remove(entityManager.merge(element));
 		}
-		
+
 		entityTransaction.commit();
 
-	}
-
-	@Override
-	public List<E> findAll() {
-
-		List<E> listeElements;
-		
-		entityTransaction.begin();
-
-		String requeteJPQL = "SELECT e FROM E e";
-		TypedQuery<E> typedQuery = entityManager.createQuery(requeteJPQL, entity);
-		listeElements = typedQuery.getResultList();
-		
-		entityTransaction.commit();
-
-		return listeElements;
 	}
 
 }

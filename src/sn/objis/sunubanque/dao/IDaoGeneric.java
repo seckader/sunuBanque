@@ -1,7 +1,6 @@
 package sn.objis.sunubanque.dao;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Cette interface présente les méthodes CRUD permettant de manipuler les objets
@@ -22,7 +21,7 @@ public interface IDaoGeneric<T, K extends Serializable> {
 	 * @param element:
 	 *            Représente l'élément à ajouter à la base de données.
 	 */
-	public void create(T element) throws Exception;
+	public void create(T element);
 
 	/**
 	 * Cette méthode permet trouver un élément à partir de son identifiant.
@@ -49,13 +48,5 @@ public interface IDaoGeneric<T, K extends Serializable> {
 	 *            Représente l'élément que l'on veut supprimer.
 	 */
 	public void delete(T element);
-
-	/**
-	 * Cette méthode permet de récupérer l'ensemble des enregistrements se trouvant
-	 * dans la base de données.
-	 * 
-	 * @return
-	 */
-	public List<T> findAll();
 
 }

@@ -10,10 +10,14 @@ import javax.persistence.*;
  *
  */
 @Entity
-
+@NamedQueries({
+	@NamedQuery(name = Client.FIND_ALL_CLIENTS, query = "SELECT c FROM Client c")
+})
 public class Client implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static final String FIND_ALL_CLIENTS = "listerClients";
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

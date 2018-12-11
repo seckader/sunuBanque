@@ -14,12 +14,18 @@ import javax.persistence.Entity;
 public class CompteEpargne extends CompteBancaire implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private double taux;
 
 	public CompteEpargne() {
 		super();
-	}   
+	}
+
+	public CompteEpargne(double taux) {
+		super();
+		this.taux = taux;
+	}
+
 	public double getTaux() {
 		return this.taux;
 	}
@@ -27,5 +33,5 @@ public class CompteEpargne extends CompteBancaire implements Serializable {
 	public void setTaux(double taux) {
 		this.taux = taux;
 	}
-   
+
 }

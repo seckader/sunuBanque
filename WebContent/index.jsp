@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Insert title here</title>
+		<title>sunuBanque</title>
 		
 		<%@ include file="/include/css.jsp" %>
 		
@@ -20,10 +20,7 @@
 		
 		<section class="content">
         <div class="container-fluid">
-            <div class="block-header">
-                <h2>Content H2</h2>
-            </div>
-            <h1>Félicitations !!</h1>
+            <h1>SunuBanque - App</h1>
         </div>
     </section>
     

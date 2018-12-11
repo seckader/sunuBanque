@@ -1,6 +1,8 @@
 package sn.objis.sunubanque.domaine;
 
 import java.io.Serializable;
+import java.security.Principal;
+
 import javax.persistence.*;
 
 /**
@@ -9,10 +11,14 @@ import javax.persistence.*;
  *
  */
 @Entity
-
-public class Role implements Serializable {
+@NamedQueries({
+	@NamedQuery(name = Role.FIND_ALL_ROLE, query = "SELECT r FROM Role r")
+})
+public class Role implements Serializable, Principal {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static final String FIND_ALL_ROLE = "listerRoles";
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -38,6 +44,10 @@ public class Role implements Serializable {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+	@Override
+	public String getName() {
+		return getNom();
 	}
    
 }

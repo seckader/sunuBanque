@@ -12,9 +12,14 @@ import javax.persistence.*;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "typeOperation", discriminatorType = DiscriminatorType.STRING)
+@NamedQueries({
+	@NamedQuery(name = Operation.FIND_ALL_OPERATION, query = "SELECT o FROM Operation o")
+})
 public abstract class Operation implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static final String FIND_ALL_OPERATION = "listerOperations";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -59,6 +64,14 @@ public abstract class Operation implements Serializable {
 
 	public void setMontant(double montant) {
 		this.montant = montant;
+	}
+
+	public Employe getEmploye() {
+		return employe;
+	}
+
+	public void setEmploye(Employe employe) {
+		this.employe = employe;
 	}
 
 }

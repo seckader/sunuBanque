@@ -4,6 +4,7 @@ import java.util.List;
 
 import sn.objis.sunubanque.dao.DaoRole;
 import sn.objis.sunubanque.domaine.Role;
+import sn.objis.sunubanque.domaine.Utilisateur;
 
 public class ServiceRole implements IServiceRole {
 
@@ -37,6 +38,16 @@ public class ServiceRole implements IServiceRole {
 	@Override
 	public Role findById(Long id) {
 		return dao.findById(id);
+	}
+
+	@Override
+	public Role findByName(String name) {
+		return dao.findByName(name);
+	}
+
+	@Override
+	public List<Role> findByUtilisateur(Utilisateur utilisateur) {
+		return dao.findByUtilisateur(utilisateur);
 	}
 
 }

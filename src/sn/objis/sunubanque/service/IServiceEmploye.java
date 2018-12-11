@@ -4,6 +4,7 @@ import java.util.List;
 
 import sn.objis.sunubanque.domaine.Employe;
 import sn.objis.sunubanque.domaine.Groupe;
+import sn.objis.sunubanque.domaine.Utilisateur;
 
 public interface IServiceEmploye extends IService<Employe> {
 	
@@ -27,5 +28,7 @@ public interface IServiceEmploye extends IService<Employe> {
 	 * @return La liste des employés du groupe passé en paramètre. 
 	 */
 	public List<Employe> findEmployeeByGroup(Groupe groupe);
+	
+	public Employe findByUtilisateur(Utilisateur utilisateur);
 
 }

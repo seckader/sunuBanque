@@ -5,6 +5,7 @@ import java.util.List;
 import sn.objis.sunubanque.dao.DaoEmploye;
 import sn.objis.sunubanque.domaine.Employe;
 import sn.objis.sunubanque.domaine.Groupe;
+import sn.objis.sunubanque.domaine.Utilisateur;
 
 public class ServiceEmploye implements IServiceEmploye {
 
@@ -48,6 +49,11 @@ public class ServiceEmploye implements IServiceEmploye {
 	@Override
 	public List<Employe> findEmployeeByGroup(Groupe groupe) {
 		return dao.findEmployeeByGroup(groupe);
+	}
+
+	@Override
+	public Employe findByUtilisateur(Utilisateur utilisateur) {
+		return dao.findByUtilisateur(utilisateur);
 	}
 
 }

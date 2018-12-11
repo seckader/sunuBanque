@@ -27,21 +27,21 @@ import javax.persistence.TemporalType;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "typeCompte", discriminatorType = DiscriminatorType.STRING)
-@NamedQueries({
+@NamedQueries({ @NamedQuery(name = CompteBancaire.FIND_ALL_COMPTE, query = "SELECT c FROM CompteBancaire c"),
 		/*
 		 * Requête permettant de lister les comptes bancaires d'un client.
 		 */
 		@NamedQuery(name = CompteBancaire.FIND_ALL_COMPTE_BY_CLIENT, query = "SELECT b FROM CompteBancaire b JOIN b.client c WHERE c=:client"),
-		
+
 		/*
 		 * Requête permettant de lister les comptes bancaires créées par un employe.
 		 */
-		@NamedQuery(name = CompteBancaire.FIND_ALL_COMPTE_BY_EMPLOYE, query = "SELECT c FROM CompteBancaire c JOIN c.employe e WHERE e=:employe")
-})
+		@NamedQuery(name = CompteBancaire.FIND_ALL_COMPTE_BY_EMPLOYE, query = "SELECT c FROM CompteBancaire c JOIN c.employe e WHERE e=:employe") })
 public abstract class CompteBancaire implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	public static final String FIND_ALL_COMPTE = "listerComptes";
 	public static final String FIND_ALL_COMPTE_BY_CLIENT = "listerParClient";
 	public static final String FIND_ALL_COMPTE_BY_EMPLOYE = "listerParEmploye";
 
@@ -57,6 +57,9 @@ public abstract class CompteBancaire implements Serializable {
 	private Date dateCreation;
 
 	private double solde;
+
+	@Column(name = "typeCompte", insertable = false, updatable = false)
+	private String typeCompte;
 
 	/**
 	 * Un compte bancaire est créé par un employé (Mapping Many-to-One
@@ -128,6 +131,22 @@ public abstract class CompteBancaire implements Serializable {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	public List<Operation> getListeOperations() {
+		return listeOperations;
+	}
+
+	public void setListeOperations(List<Operation> listeOperations) {
+		this.listeOperations = listeOperations;
+	}
+
+	public String getTypeCompte() {
+		return typeCompte;
+	}
+
+	public void setTypeCompte(String typeCompte) {
+		this.typeCompte = typeCompte;
 	}
 
 }

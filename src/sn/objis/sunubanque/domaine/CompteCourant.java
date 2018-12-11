@@ -14,12 +14,18 @@ import javax.persistence.Entity;
 public class CompteCourant extends CompteBancaire implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private double decouvert;
 
 	public CompteCourant() {
 		super();
-	}   
+	}
+
+	public CompteCourant(double decouvert) {
+		super();
+		this.decouvert = decouvert;
+	}
+
 	public double getDecouvert() {
 		return this.decouvert;
 	}
@@ -27,5 +33,5 @@ public class CompteCourant extends CompteBancaire implements Serializable {
 	public void setDecouvert(double decouvert) {
 		this.decouvert = decouvert;
 	}
-   
+
 }

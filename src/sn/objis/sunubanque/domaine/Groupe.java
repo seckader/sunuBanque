@@ -10,10 +10,14 @@ import javax.persistence.*;
  *
  */
 @Entity
-
+@NamedQueries({
+	@NamedQuery(name = Groupe.FIND_ALL_GROUPE, query = "SELECT g FROM Groupe g")
+})
 public class Groupe implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	public static final String FIND_ALL_GROUPE = "listerGroupes";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

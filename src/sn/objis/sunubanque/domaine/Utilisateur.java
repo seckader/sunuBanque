@@ -1,6 +1,7 @@
 package sn.objis.sunubanque.domaine;
 
 import java.io.Serializable;
+import java.security.Principal;
 import java.util.List;
 
 import javax.persistence.*;
@@ -10,10 +11,14 @@ import javax.persistence.*;
  *
  */
 @Entity
-
-public class Utilisateur implements Serializable {
+@NamedQueries({
+	@NamedQuery(name = Utilisateur.FIND_ALL_Utilisateur, query = "SELECT u FROM Utilisateur u")
+})
+public class Utilisateur implements Serializable, Principal {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static final String FIND_ALL_Utilisateur = "listerUtilisateur";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -66,6 +71,11 @@ public class Utilisateur implements Serializable {
 
 	public void setListeRoles(List<Role> listeRoles) {
 		this.listeRoles = listeRoles;
+	}
+
+	@Override
+	public String getName() {
+		return getLogin();
 	}
 
 }

@@ -39,4 +39,14 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 		return dao.findById(id);
 	}
 
+	@Override
+	public Utilisateur seConnecter(String login, String password) {
+		return dao.seConnecter(login, password);
+	}
+
+	@Override
+	public Utilisateur findByLogin(String login) {
+		return dao.findByLogin(login);
+	}
+
 }

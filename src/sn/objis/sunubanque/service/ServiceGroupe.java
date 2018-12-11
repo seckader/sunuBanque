@@ -45,4 +45,9 @@ public class ServiceGroupe implements IServiceGroupe {
 		return dao.findGroupsOfEmploye(employe);
 	}
 
+	@Override
+	public Groupe findByName(String name) {
+		return dao.findByName(name);
+	}
+
 }

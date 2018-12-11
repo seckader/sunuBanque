@@ -7,7 +7,7 @@
                     <img src="<%= request.getContextPath() %>/template/images/user.png" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${employeConnecte.prenomEmploye} ${employeConnecte.nomEmploye}</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
@@ -36,10 +36,10 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/ui/alerts.html">Ajouter groupe</a>
+                                <a href="<%= request.getContextPath() %>/jsp/superieur/ajouterGroupe.jsp">Ajouter groupe</a>
                             </li>
                             <li>
-                                <a href="pages/ui/animations.html">Liste des groupes</a>
+                                <a href="<%= request.getContextPath() %>/listeGroupes">Liste des groupes</a>
                             </li>
                         </ul>
                     </li>
@@ -50,13 +50,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/ui/alerts.html">Ajouter employé</a>
+                                <a href="<%= request.getContextPath() %>/ajoutEmploye">Ajouter employé</a>
                             </li>
                             <li>
-                                <a href="pages/ui/alerts.html">Ajouter employé à un groupe</a>
-                            </li>
+	                            <a href="<%= request.getContextPath() %>/ajoutEmployeGroupe">Ajouter employé à un groupe</a>
+	                        </li>
                             <li>
-                                <a href="pages/ui/animations.html">Liste des Employés</a>
+                                <a href="<%= request.getContextPath() %>/listeEmployes">Liste des Employés</a>
                             </li>
                         </ul>
                     </li>
@@ -67,13 +67,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/ui/alerts.html">Ajouter client</a>
+                                <a href="<%= request.getContextPath() %>/ajoutClient">Ajouter client</a>
                             </li>
                             <li>
                                 <a href="pages/ui/alerts.html">Consulter client</a>
                             </li>
                             <li>
-                                <a href="pages/ui/animations.html">Liste des clients</a>
+                                <a href="<%= request.getContextPath() %>/listeClients">Liste des clients</a>
                             </li>
                         </ul>
                     </li>
@@ -84,19 +84,27 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/ui/alerts.html">Ouvrir un compte</a>
+                                <a href="<%= request.getContextPath() %>/jsp/ouvrirCompte.jsp">Ouvrir un compte</a>
                             </li>
                             <li>
                                 <a href="pages/ui/alerts.html">Consulter compte</a>
                             </li>
                             <li>
-                                <a href="pages/ui/animations.html">Versement</a>
+                                <a href="<%= request.getContextPath() %>/jsp/effectuerOperation.jsp">Effectuer Opération</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">settings</i>
+                            <span>Paramétrage</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="<%= request.getContextPath() %>/jsp/superieur/ajouterRole.jsp">Ajouter Rôle</a>
                             </li>
                             <li>
-                                <a href="pages/ui/animations.html">Retrait</a>
-                            </li>
-                            <li>
-                                <a href="pages/ui/animations.html">Virement</a>
+                                <a href="<%= request.getContextPath() %>/listeRoles">Liste des Rôles</a>
                             </li>
                         </ul>
                     </li>

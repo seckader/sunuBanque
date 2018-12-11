@@ -9,6 +9,8 @@ public interface IServiceGroupe extends IService<Groupe> {
 	
 	public Groupe findById(Long id);
 	
+	public Groupe findByName(String name);
+	
 	/**
 	 * Cette méthode permet de trouver les groupes d'un employé.
 	 * 

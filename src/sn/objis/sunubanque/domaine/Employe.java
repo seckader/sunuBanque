@@ -10,10 +10,14 @@ import javax.persistence.*;
  *
  */
 @Entity
-
+@NamedQueries({
+	@NamedQuery(name = Employe.FIND_ALL_EMPLOYE, query = "SELECT e FROM Employe e")
+})
 public class Employe implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static final String FIND_ALL_EMPLOYE = "listerEmployes";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,7 +46,7 @@ public class Employe implements Serializable {
 	 * bidirectionnel)
 	 */
 	@ManyToMany
-	@JoinTable(joinColumns=@JoinColumn(name="idEtudiant"), inverseJoinColumns=@JoinColumn(name="numeroGroupe"))
+	@JoinTable(joinColumns=@JoinColumn(name="idEmploye"), inverseJoinColumns=@JoinColumn(name="numeroGroupe"))
 	private List<Groupe> listeGroupes;
 
 	public Employe() {

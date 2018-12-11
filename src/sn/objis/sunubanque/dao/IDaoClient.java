@@ -1,5 +1,7 @@
 package sn.objis.sunubanque.dao;
 
+import java.util.List;
+
 import sn.objis.sunubanque.domaine.Client;
 
 /**
@@ -11,4 +13,11 @@ import sn.objis.sunubanque.domaine.Client;
  */
 public interface IDaoClient extends IDaoGeneric<Client, Long> {
 
+	/**
+	 * Cette méthode permet de récupérer l'ensemble des enregistrements se trouvant
+	 * dans la base de données.
+	 * 
+	 * @return
+	 */
+	public List<Client> findAll();
 }

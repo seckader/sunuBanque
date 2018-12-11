@@ -59,12 +59,11 @@
 	</dependency>
 	
 <!-- 	Ajout de la dépendance de JSTL -->
-<!-- 	<dependency> -->
-<!-- 	    <groupId>javax.servlet.jsp.jstl</groupId> -->
-<!-- 	    <artifactId>jstl</artifactId> -->
-<!-- 	    <version>1.2</version> -->
-<!-- 	    <scope>provided</scope> -->
-<!-- 	</dependency> -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>	
+		</dependency>
 	
 <!--   	Ajout de la dépendance de log4j -->
   	<dependency>

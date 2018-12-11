@@ -15,6 +15,15 @@ import sn.objis.sunubanque.domaine.Employe;
  */
 public interface IDaoCompteBancaire extends IDaoGeneric<CompteBancaire, Long> {
 
+	
+	/**
+	 * Cette méthode permet de récupérer l'ensemble des enregistrements se trouvant
+	 * dans la base de données.
+	 * 
+	 * @return
+	 */
+	public List<CompteBancaire> findAll();
+	
 	/**
 	 * Cette méthode permet de trouver la liste de tous les comptes bancaires d'un
 	 * client.
@@ -32,4 +41,6 @@ public interface IDaoCompteBancaire extends IDaoGeneric<CompteBancaire, Long> {
 	 * @return
 	 */
 	public List<CompteBancaire> findCompteByEmploye(Employe employe);
+	
+	public CompteBancaire findByNumeroCompte(String numeroCompte);
 }

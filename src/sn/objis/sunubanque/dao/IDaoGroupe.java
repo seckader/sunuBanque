@@ -13,6 +13,16 @@ import sn.objis.sunubanque.domaine.Groupe;
  *
  */
 public interface IDaoGroupe extends IDaoGeneric<Groupe, Long> {
+	
+	/**
+	 * Cette méthode permet de récupérer l'ensemble des enregistrements se trouvant
+	 * dans la base de données.
+	 * 
+	 * @return
+	 */
+	public List<Groupe> findAll();
+	
+	public Groupe findByName(String name);
 
 	/**
 	 * Cette méthode permet de trouver les groupes d'un employé.
